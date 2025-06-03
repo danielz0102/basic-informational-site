@@ -4,8 +4,66 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>About</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f9f9f9;
+        margin: 0;
+        padding: 0;
+        color: #222;
+      }
+      nav {
+        background: #333;
+        padding: 1em 0;
+        text-align: center;
+      }
+      nav a {
+        color: #fff;
+        text-decoration: none;
+        margin: 0 1.5em;
+        font-weight: bold;
+        transition: color 0.2s;
+      }
+      nav a:hover {
+        color: #ff9800;
+      }
+      .container {
+        max-width: 700px;
+        margin: 2em auto;
+        background: #fff;
+        padding: 2em;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+      }
+      h1 {
+        color: #333;
+      }
+    </style>
   </head>
   <body>
-    About
+    <nav>
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/contact-me">Contact</a>
+    </nav>
+    <div class="container">
+      <h1>About Acme Web Solutions</h1>
+      <p>
+        Acme Web Solutions is a leading provider of innovative web design and
+        development services for small businesses. We help you grow your online
+        presence with modern, responsive, and effective websites.
+      </p>
+      <h2>Our Mission</h2>
+      <p>
+        To empower local businesses with affordable, high-quality digital
+        solutions that drive results and foster growth.
+      </p>
+      <h2>What We Offer</h2>
+      <ul>
+        <li>Custom website design and development</li>
+        <li>SEO and digital marketing services</li>
+        <li>Ongoing support and maintenance</li>
+      </ul>
+    </div>
   </body>
 </html>

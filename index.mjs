@@ -1,23 +1,18 @@
-import http from "node:http";
-import fs from "node:fs/promises";
+import express from "express";
 
-const PAGES = ["/", "/about", "/contact-me"];
+const app = express();
+const options = {
+  root: process.cwd() + "/pages",
+};
 
-const server = http.createServer(async (req, res) => {
-  res.setHeader("Content-Type", "text/html; charset=utf-8");
-
-  if (!PAGES.includes(req.url)) {
-    const html = await fs.readFile("./404.html", "utf-8");
-    res.statusCode = 404;
-    return res.end(html);
-  }
-
-  const filepath = `.${req.url === "/" ? "/index" : req.url}.html`;
-  const html = await fs.readFile(filepath, "utf-8");
-  res.statusCode = 200;
-  res.end(html);
+app.get(["/", "/about", "/contact"], (req, res) => {
+  const page = req.path === "/" ? "index.html" : req.path.slice(1) + ".html";
+  res.sendFile(page, options);
 });
 
-server.listen(8080, () => {
-  console.log("Server is running at http://localhost:8080/");
+app.use((req, res) => {
+  res.status(404).sendFile("404.html", options);
 });
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
